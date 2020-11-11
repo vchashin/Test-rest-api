@@ -13,7 +13,11 @@ export class UsersService {
     return this.userModel.findAll();
   }
 
-  findOne(id: string): Promise<User> {
+  async create(userData): Promise<User> {
+    return this.userModel.create(userData);
+  }
+
+  async findOne(id: string): Promise<User> {
     return this.userModel.findOne({
       where: {
         id,
