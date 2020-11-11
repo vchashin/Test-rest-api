@@ -4,25 +4,25 @@ import { User } from './user.model';
 
 @Injectable()
 export class UsersService {
-    constructor(
-        @InjectModel(User)
-        private userModel: typeof User,
-    ) {}
+  constructor(
+    @InjectModel(User)
+    private userModel: typeof User,
+  ) {}
 
-    async findAll(): Promise<User[]> {
-        return this.userModel.findAll();
-    }
+  async findAll(): Promise<User[]> {
+    return this.userModel.findAll();
+  }
 
-    findOne(id: string): Promise<User> {
-        return this.userModel.findOne({
-            where: {
-                id,
-            },
-        });
-    }
+  findOne(id: string): Promise<User> {
+    return this.userModel.findOne({
+      where: {
+        id,
+      },
+    });
+  }
 
-    async remove(id: string): Promise<void> {
-        const user = await this.findOne(id);
-        await user.destroy();
-    }
+  async remove(id: string): Promise<void> {
+    const user = await this.findOne(id);
+    await user.destroy();
+  }
 }
