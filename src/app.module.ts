@@ -6,7 +6,8 @@ import {
 } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { UsersModule } from './users/users.module';
-import { AuthenticationMiddleware } from './users/common/authentication.middleware';
+import { AuthenticationMiddleware } from './common/authentication.middleware';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { AuthenticationMiddleware } from './users/common/authentication.middlewa
       synchronize: true,
     }),
     UsersModule,
+    AuthModule,
   ],
 })
 export class AppModule implements NestModule {
