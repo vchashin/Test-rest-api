@@ -6,8 +6,7 @@ export class AuthService {
   constructor() {}
 
   async getAccessToken(code: string): Promise<any> {
-    console.log(code);
-    const jwtToken = await axios.post(
+    const { data: jwtToken } = await axios.post(
       'https://dev-lnwkc070.eu.auth0.com/oauth/token',
       {
         grant_type: 'authorization_code',
@@ -18,7 +17,6 @@ export class AuthService {
         redirect_uri: 'http://localhost:3000/api/users',
       },
     );
-    console.log(jwtToken);
     return jwtToken;
   }
 }
